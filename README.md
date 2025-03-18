@@ -120,6 +120,44 @@ Living Shop은 리빙 스타일 제품을 판매하는 쇼핑몰입니다. 이 �
 
 ---
 
+#### **1.5 로그인 상태 확인**
+
+- **URL**: `GET http://localhost:8080/member/status`
+- **설명**: 현재 세션의 로그인 상태를 확인합니다.
+- **Response** (로그인 상태 유지 중):
+  ```json
+  {
+    "nickname": "Tester",
+    "message": "로그인 상태 유지 중"
+  }
+  ```
+- **Response** (로그인되지 않은 상태):
+  ```json
+  {
+    "message": "로그인되지 않은 상태입니다."
+  }
+  ```
+
+---
+
+#### **1.6 세션 유지 시간 확인**
+
+- **URL**: `GET http://localhost:8080/member/session-time`
+- **설명**: 현재 세션의 만료 시간(유지 시간)을 조회합니다.
+- **Response** (세션 유지 중):
+  ```json
+  {
+    "sessionTimeout": "1800초",
+    "message": "세션이 유지 중입니다."
+  }
+  ```
+- **Response** (세션이 존재하지 않는 경우):
+  ```json
+  {
+    "message": "세션이 존재하지 않습니다."
+  }
+  ```
+
 ### **2. 상품 관련 API**
 
 #### **2.1 모든 상품 조회**
