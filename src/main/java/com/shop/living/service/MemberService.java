@@ -19,6 +19,12 @@ public class MemberService {
         member.setPwd(hashedPwd);
         memberDao.insertMember(member);
     }
+    
+ // ✅ 이메일 중복 확인
+    public boolean isEmailAvailable(String email) {
+        Member existingMember = memberDao.getMemberByEmail(email);
+        return existingMember == null; // 존재하지 않으면 사용 가능
+    }
 
     // ✅ 로그인 (비밀번호 검증)
     public Member login(Member member) throws Exception {

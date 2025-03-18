@@ -34,6 +34,29 @@ public class MemberController {
             return "회원가입 실패";
         }
     }
+    
+    // ✅ 이메일 중복 확인 API
+    @GetMapping("/check-email")
+    public Map<String, Object> checkEmail(@RequestBody Map<String, String> request) {
+        Map<String, Object> response = new HashMap<>();
+        String email = request.get("email");
+
+        if (email == null || email.trim().isEmpty()) {
+            response.put("available", false);
+            response.put("message", "이메일을 입력해주세요.");
+            return response;
+        }
+
+        boolean isAvailable = memberService.isEmailAvailable(email);
+        if (isAvailable) {
+            response.put("available", true);
+            response.put("message", "사용 가능한 이메일입니다.");
+        } else {
+            response.put("available", false);
+            response.put("message", "이미 사용 중인 이메일입니다.");
+        }
+        return response;
+    }
 
     // ✅ 로그인 (세션 방식)
     @PostMapping("/login")

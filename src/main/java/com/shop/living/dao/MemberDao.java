@@ -15,5 +15,5 @@ public interface MemberDao {
 
     // ✅ 이메일로 회원 정보 조회
     @Select("SELECT * FROM member WHERE email = #{email}")
-    Member getMemberByEmail(String email) throws Exception;
+    Member getMemberByEmail(String email);
 }
