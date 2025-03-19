@@ -4,6 +4,7 @@ public class Member {
     private String email;
     private String pwd;
     private String nickname;
+    private String salt;
 
     // 기본 생성자
     public Member() {}
@@ -13,6 +14,7 @@ public class Member {
         this.email = email;
         this.pwd = pwd;
         this.nickname = nickname;
+        this.salt = salt;
     }
 
     // Getter & Setter
@@ -24,6 +26,9 @@ public class Member {
 
     public String getNickname() { return nickname; }
     public void setNickname(String nickname) { this.nickname = nickname; }
+    
+    public String getSalt() { return salt; } 
+    public void setSalt(String salt) { this.salt = salt; }  
 
     @Override
     public String toString() {
